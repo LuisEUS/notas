@@ -3,22 +3,48 @@ import { useState } from "react"
 function App() {
   //TODO: Presentar el concepto del "state"
   //hooks
- const [pruebaState, setPruebaState] = useState("");
+ const [tituloState, setTituloState] = useState("");
+ const [fechaState, setFechaState] = useState("");
+ const [notaState, setNotaState] = useState("");
 
-  const handleChangePrueba = (event) => {
-    setPruebaState(event.target.value); 
+  const handleChangeTitulo = (event) => {
+    setTituloState(event.target.value); 
   };
-  
+  const handleChangeFecha = (event) => {
+    setFechaState(event.target.value); 
+  };
+  const handleChangeNota = (event) => {
+    setNotaState(event.target.value); 
+  }
+
   return (
     <div className="App">
-      <h3>Hola</h3>
-      <label htmlfor = "pruebaID">Input de prueba</label>
+      <h3>Notas</h3>
+      <label htmlfor = "titulo">Titulo</label>
       <input 
-        id = "pruebaID" 
-        name = "prueba" 
+        id = "titulo" 
+        name = "titulo" 
         type = "text" 
-        onChange = {handleChangePrueba}
-        value = {pruebaState}
+        onChange = {handleChangeTitulo}
+        value = {tituloState}
+      />
+      <br></br>
+      <label htmlfor = "fecha">Fecha</label>
+      <input 
+        id = "fecha"
+        name = "fecha" 
+        type = "text" 
+        onChange = {handleChangeFecha}
+        value = {fechaState}
+      />
+      <br></br>
+      <label htmlfor = "nota">Nota</label>
+      <input 
+        id = "nota" 
+        name = "nota" 
+        type = "text" 
+        onChange = {handleChangeNota}
+        value = {notaState}
       />
     </div>
   );
