@@ -17,6 +17,14 @@ function App() {
     });
   };
 
+  const handleResetChange = () => {
+    setInputState({
+      ...inputState,
+    titulo: "", 
+    fecha: "", 
+    nota: ""
+  });
+  };
 
   return (
     <div className="App">
@@ -47,6 +55,14 @@ function App() {
         onChange = {handleInputChange}
         value = {inputState.nota}
       />
+    <button
+          type="button" 
+          className="btn btn-primary mx-2" 
+          onClick={handleResetChange}
+          style={{marginLeft:"15px"}}
+        >Reinicio
+    </button>
+
     </div>
   );
 }
