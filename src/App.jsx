@@ -25,11 +25,12 @@ function App() {
     });
 
   }
+  let arregloNotas = JSON.parse 
+  (localStorage.getItem("notas")) || []
 
   const handleClickGuardar =() =>{
-    let arregloNotas = JSON.parse 
-    (localStorage.getItem("notas")) || []
-    arregloNotas.push(inputState);
+    
+    arregloNotas.push(inputState); 
 
     localStorage.setItem("notas", JSON.stringify(arregloNotas));
     handleResetClick();
@@ -40,7 +41,20 @@ function App() {
       <div className="row">
         <div className="col">
           <h3>Lista</h3>
-        </div>
+          {
+            arregloNotas.length === 0 ?
+            "Al momento no tienes notas guardadas. Puedes crear una en el formulario contiguo.":
+            <ol>
+           {arregloNotas.map((item) => {
+            return (
+              <li>{item.titulo}
+              ({item.fecha})</li>
+            )
+           }
+           )}
+           </ol>
+          }
+              </div>
 
         <div className="col">
         <h3>Hola</h3>
