@@ -29,9 +29,9 @@ function App() {
   }
   
   const handleClickGuardar =() =>{
-   setNotas([...arregloNotas, inputState])
-   
-    localStorage.setItem("notas", JSON.stringify(arregloNotas));
+    localStorage.setItem("notas", JSON.stringify([...arregloNotas, inputState]));
+    setNotas([...arregloNotas, inputState])
+  
     handleResetClick();
   }
 
@@ -45,7 +45,10 @@ function App() {
     localStorage.setItem("notas",JSON.stringify(nuevoArreglo));
     setNotas([...nuevoArreglo])
   }
-
+  const handleClickLimpiaLista =()=>{
+    setNotas([])
+  localStorage.setItem("notas",JSON.stringify([]));
+  }
   return (
     <div className="App container">
       <div className="row">
@@ -70,6 +73,12 @@ function App() {
            )}
            </ol>
           }
+          <button
+          type="button"
+          className="btn btn-primary"
+          onClick={handleClickLimpiaLista}
+          disabled={arregloNotas.length===0}
+          >Limpia Lista</button>
         </div>
 
         <div className="col">
@@ -116,6 +125,11 @@ function App() {
             type="button"
             className="btn btn-secondary"
             onClick={handleResetClick}
+            disabled={
+              inputState.titulo===""||
+              inputState.fecha===""||
+              inputState.nota===""
+              }
           >
             Limpiar
           </button>
@@ -128,7 +142,13 @@ function App() {
           <button 
             type="button"
             className="btn btn-secondary"
-            onClick={handleClickGuardar}>
+            onClick={handleClickGuardar}
+            disabled={
+              inputState.titulo===""||
+              inputState.fecha===""||
+              inputState.nota===""
+              }
+          >
             Guardar
           </button>
           </span>
