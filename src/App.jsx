@@ -48,7 +48,14 @@ function App() {
   const handleClickLimpiaLista =()=>{
     setNotas([])
   localStorage.setItem("notas",JSON.stringify([]));
+
+
   }
+  const handleClickNota=(index)=>{
+    setInputState({...arregloNotas[index]})
+    
+  }
+
   return (
     <div className="App container">
       <div className="row">
@@ -61,7 +68,7 @@ function App() {
            <ol>
            {arregloNotas.map((item, index) => {
             return(
-              <li key={index}>
+              <li key={index}onClick={()=>handleClickNota(index)}>
                     {item.titulo}({item.fecha}) &nbsp;
                     <i className="bi-x-circle-fill"
                     onClick={() => handleBorrarNota(index)}
